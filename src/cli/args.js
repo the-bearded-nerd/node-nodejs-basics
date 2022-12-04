@@ -1,5 +1,14 @@
+import * as process from "process";
+
 const parseArgs = () => {
-    // Write your code here 
+  const args = process.argv.slice(2);
+  const result = [];
+  args.forEach((value, index) => {
+    if (index % 2 === 0) {
+      result.push(`${value} is ${args[index + 1]}`);
+    }
+  });
+  console.log(result.join(", "));
 };
 
 parseArgs();
