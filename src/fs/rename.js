@@ -8,12 +8,7 @@ const pathToProperFilename = path.join(__dirname, "files", "properFilename.md");
 
 const rename = async () => {
   try {
-    await fsPromises.copyFile(
-      pathToWrongFilename,
-      pathToProperFilename,
-      fsPromises.constants.COPYFILE_EXCL
-    );
-    await fsPromises.rm(pathToWrongFilename);
+    await fsPromises.rename(pathToWrongFilename, pathToProperFilename);
   } catch (e) {
     throw Error("FS operation failed");
   }

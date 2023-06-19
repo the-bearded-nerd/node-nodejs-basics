@@ -5,7 +5,7 @@ const parseArgs = () => {
   const result = [];
   args.forEach((value, index) => {
     if (index % 2 === 0) {
-      result.push(`${value} is ${args[index + 1]}`);
+      result.push(`${value.slice(2)} is ${args[index + 1]}`);
     }
   });
   console.log(result.join(", "));
