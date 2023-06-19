@@ -2,12 +2,11 @@ import { Transform } from "stream";
 
 const reverseTr = new Transform({
   transform(chunk, encoding, callback) {
-    this.push(chunk.toString().split("").reverse().join(""));
+    callback(
+      null,
+      chunk.toString().slice(0, -2).split("").reverse().join("").concat("\r\n")
+    );
   },
 });
 
-const transform = async () => {
-  process.stdin.pipe(reverseTr).pipe(process.stdout);
-};
-
-await transform();
+process.stdin.pipe(reverseTr).pipe(process.stdout);
